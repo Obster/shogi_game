@@ -1,13 +1,17 @@
 .frame {
-    background-color: goldenrod;
+    background-color: #b76f20;
     padding: 1rem;
     border-radius: 6px;
     margin: 0;
+
     position: absolute;
     top: 50%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    height: 80vh;
-    width: 130vh;
+    min-height: 80vh;
+    min-width: 130vh;
+
+    display: inline-block;
+    overflow: auto;
   }

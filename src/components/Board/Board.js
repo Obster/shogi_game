@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 
 import classes from "./Board.module.css";
 import Tile from "./Tile";
@@ -6,23 +6,25 @@ import Tile from "./Tile";
 const Board = (props) => {
   const shogiGrid = useSelector((state) => state.shogi.items);
 
-
-  const fullGrid = shogiGrid.map((row) => {
-    return <tr>
-        {row.map((column) => {
-          return <td> <Tile/> </td>
+  const fullGrid = shogiGrid.map((row, rowIndex) => {
+    return (
+      <tr>
+        {row.map((column, columnIndex) => {
+          return (
+            <td>
+              <Tile playerNumber={column.owner} tileType={column.type} rowIndex={rowIndex} columnIndex={columnIndex} />
+            </td>
+          );
         })}
-    </tr>
-  })
+      </tr>
+    );
+  });
 
-    
   return (
     <div className={classes.board}>
-        <table className={classes.table}>
-          <tbody>
-          {fullGrid}
-          </tbody>
-        </table>
+      <table className={classes.table}>
+        <tbody>{fullGrid}</tbody>
+      </table>
     </div>
   );
 };

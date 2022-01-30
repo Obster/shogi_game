@@ -3,6 +3,23 @@
     min-width: 14vh;
     background-color: transparent;
     font-size: 16px;
-    cursor: pointer;
     border: none
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.img {
+    width: '100vh';
+}
+
+.rotateImage {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+.coloredTitle {
+    background-color: red !important;
+    opacity: 50%;
 }
