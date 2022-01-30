@@ -1,0 +1,8 @@
+.tile {
+    min-height: 8.5vh;
+    min-width: 14vh;
+    background-color: transparent;
+    font-size: 16px;
+    cursor: pointer;
+    border: none
+}

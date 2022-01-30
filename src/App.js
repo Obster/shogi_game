@@ -1,9 +1,16 @@
-import './App.css';
+import React, { Fragment } from "react";
+
+import classes from './App.module.css';
+import BoardFrame from "./components/Board/BoardFrame";
+
 
 function App() {
-  return <div>
-    Learn React
-  </div>
+  return (
+    <Fragment>
+        <BoardFrame />
+    </Fragment>
+      
+  );
 }
 
 export default App;
