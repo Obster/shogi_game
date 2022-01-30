@@ -6,13 +6,14 @@ import Tile from "./Tile";
 const Board = (props) => {
   const shogiGrid = useSelector((state) => state.shogi.items);
 
+  // map the grid data to tiles
   const fullGrid = shogiGrid.map((row, rowIndex) => {
     return (
-      <tr>
+      <tr key={rowIndex + "_tr" + Math.random()}>
         {row.map((column, columnIndex) => {
           return (
-            <td>
-              <Tile playerNumber={column.owner} tileType={column.type} rowIndex={rowIndex} columnIndex={columnIndex} />
+            <td key={rowIndex + "_" + columnIndex + "_td"} >
+              <Tile key={rowIndex + "_" + columnIndex + "_title"} playerNumber={column.owner} tileType={column.type} rowIndex={rowIndex} columnIndex={columnIndex} />
             </td>
           );
         })}

@@ -3,10 +3,8 @@ import classes from "./BoardFrame.module.css";
 
 const BoardFrame = (props) => {
   return (
-    <div
-      className={`${classes.frame} ${props.className ? props.className : ""}`}
-    >
-      <Board/>
+    <div className={`${classes.frame} ${props.className ? props.className : ""}`}>
+      <Board />
     </div>
   );
 };

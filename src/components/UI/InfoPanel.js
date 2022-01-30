@@ -1,4 +1,3 @@
-import classes from "./Card.module.css";
 import { useSelector } from "react-redux";
 import Card from "./Card";
 
@@ -15,10 +14,13 @@ const InfoPanel = (props) => {
       const shogiCurrentPlayer = useSelector(
         (state) => state.shogi.currentPlayer
       );
+      const shogiLastMoveInfo = useSelector(
+        (state) => state.shogi.lastMoveInfo
+      );
 
   return (
     <Card>
-        <label> Current player: {shogiCurrentPlayer} | Current Type: {shogiSelectedType} |  Selected RowColumn: {shogiSelectedRow} {shogiSelectedColumn} </label>
+        <label> Current player: {shogiCurrentPlayer} | Current Type: {shogiSelectedType} |  Selected RowColumn: {shogiSelectedRow} {shogiSelectedColumn} | Info: {shogiLastMoveInfo} </label>
     </Card>
   );
 };

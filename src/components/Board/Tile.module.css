@@ -1,5 +1,5 @@
 .tile {
-    min-height: 8.5vh;
+    min-height: 8vh;
     min-width: 14vh;
     background-color: transparent;
     font-size: 16px;
@@ -11,7 +11,7 @@
 }
 
 .img {
-    width: '100vh';
+    width: '75vh';
 }
 
 .rotateImage {

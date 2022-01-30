@@ -1,5 +1,6 @@
 import { shogiActions } from "./shogi-slice";
 
+// calculate every valid moves (including tiles where are pieces)
 export const calculateTiles = (oldRowIndex, oldColumnIndex, oldTileType, currentPlayer) => {
   return (dispatch) => {
     let validTiles = [];
@@ -93,7 +94,7 @@ export const calculateTiles = (oldRowIndex, oldColumnIndex, oldTileType, current
         break;
       case "S":
         if (currentPlayer === 1) {
-          for (let i = oldRowIndex - 1; i < oldRowIndex + 1; i++) {
+          for (let i = oldRowIndex - 1; i < oldRowIndex; i++) {
             for (let j = oldColumnIndex - 1; j < oldColumnIndex + 2; j++) {
               if (i < 9 && j < 9 && i > -1 && j > -1 && (i !== oldRowIndex || j !== oldColumnIndex)) {
                 validTiles.push({ row: i, column: j });
@@ -109,7 +110,7 @@ export const calculateTiles = (oldRowIndex, oldColumnIndex, oldTileType, current
             }
           }
         } else {
-          for (let i = oldRowIndex; i < oldRowIndex + 2; i++) {
+          for (let i = oldRowIndex + 1; i < oldRowIndex + 2; i++) {
             for (let j = oldColumnIndex - 1; j < oldColumnIndex + 2; j++) {
               if (i < 9 && j < 9 && i > -1 && j > -1 && (i !== oldRowIndex || j !== oldColumnIndex)) {
                 validTiles.push({ row: i, column: j });
@@ -129,10 +130,12 @@ export const calculateTiles = (oldRowIndex, oldColumnIndex, oldTileType, current
       default:
     }
 
+    // save it to the store
     dispatch(shogiActions.setValidTitles({ validTiles: validTiles }));
   };
 };
 
+// check if our move was valid
 export const determineValidMove = (newRowIndex, newColumnIndex, newTileType, oldRowIndex, oldColumnIndex, oldTileType, currentPlayer, validTiles) => {
   return (dispatch) => {
     let determineValidity = false;
@@ -167,6 +170,9 @@ export const determineValidMove = (newRowIndex, newColumnIndex, newTileType, old
           currentPlayer,
         })
       );
+      dispatch(shogiActions.setLastMoveInfo({ lastMoveInfo: "Yey! It was a valid move!" }));
+    } else {
+      dispatch(shogiActions.setLastMoveInfo({ lastMoveInfo: "Not a valid move!" }));
     }
   };
 };

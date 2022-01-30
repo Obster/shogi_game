@@ -16,8 +16,8 @@ const Tile = (props) => {
 
   let renderImg = "";
 
+  // update valid tile move colors
   useEffect(() => {
-      console.log("why");
     setIsColoredTitle(false);
 
     if(props.tileType !== "E") {
@@ -31,8 +31,9 @@ const Tile = (props) => {
         }
     }
     setIsColoredTitle(false);
-  }, [shogiValidTile])
+  }, [shogiValidTile, props.tileType, props.rowIndex, props.columnIndex])
 
+  // set the img correctly
   switch (props.tileType) {
     case "B":
       renderImg = "/graphics/bishop.png";
@@ -62,13 +63,19 @@ const Tile = (props) => {
   }
 
   function selectionHandler(rowIndex, columnIndex, tileType, shogiSelectedRow, shogiSelectedColumn, shogiSelectedType, shogiCurrentPlayer) {
+    // wrong player -> return
     if (props.playerNumber !== shogiCurrentPlayer && props.playerNumber !== 0) {
+      dispatch(shogiActions.setLastMoveInfo({lastMoveInfo: "Wrong player!"}));
       return;
     }
 
+    dispatch(shogiActions.setLastMoveInfo({lastMoveInfo: ""}));
+
+    // if this is our second selection -> check if we can do it
     if (shogiSelectedRow !== -1) {
       dispatch(determineValidMove(rowIndex, columnIndex, tileType, shogiSelectedRow, shogiSelectedColumn, shogiSelectedType, shogiCurrentPlayer, shogiValidTile));
-    } else if (tileType !== "E") {
+    } else if (tileType !== "E") { // if this is our first selection
+        
       dispatch(shogiActions.changeCurrentlySelected({ rowIndex, columnIndex, tileType }));
       dispatch(calculateTiles(rowIndex, columnIndex, tileType, shogiCurrentPlayer));
     }
@@ -81,7 +88,7 @@ const Tile = (props) => {
       }
       className={`${classes.tile} ${props.tileType !== "E" ? classes.pointer : ""} ${isColoredTitle ? classes.coloredTitle : ""}`}
     >
-      {renderImg && <img alt='' className={`${classes.img} ${props.playerNumber !== 1 ? classes.rotateImage : ""}`} src={renderImg} width='100vh' />}{" "}
+      {renderImg && <img alt='' className={`${classes.img} ${props.playerNumber !== 1 ? classes.rotateImage : ""}`} src={renderImg} width='70vh' />}{" "}
     </button>
   );
 };
