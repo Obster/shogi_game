@@ -1,17 +1,11 @@
 .frame {
-    background-color: #b76f20;
-    padding: 1rem;
+    background-color: #855E42;
+    padding: 0;
     border-radius: 6px;
-    margin: 0;
-
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    min-height: 80vh;
-    min-width: 130vh;
-
-    display: inline-block;
+    margin: 1rem;
+    flex: 4 1;
+    position: relative;
     overflow: auto;
+    min-width: 400px;
+    min-height: 200px;
   }

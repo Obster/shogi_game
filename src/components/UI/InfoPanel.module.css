@@ -1,0 +1,14 @@
+.currentPlayer {
+    font-size: larger;
+    text-align: justify;
+    width: 100%;
+    display: block;
+}
+
+h3 {
+    text-align: center;
+}
+
+.activePlayer {
+    color: gold;
+}

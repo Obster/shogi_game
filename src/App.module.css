@@ -1,3 +1,17 @@
 .height {
     height: 100%;
   }
+
+.flexbox {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: space-around;
+  background-color: #3f3f3f;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  min-width: auto;
+  min-height: auto;
+}

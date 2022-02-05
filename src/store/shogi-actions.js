@@ -170,7 +170,7 @@ export const determineValidMove = (newRowIndex, newColumnIndex, newTileType, old
           currentPlayer,
         })
       );
-      dispatch(shogiActions.setLastMoveInfo({ lastMoveInfo: "Yey! It was a valid move!" }));
+      dispatch(shogiActions.setLastMoveInfo({ lastMoveInfo: "Yey! Your turn!" }));
     } else {
       dispatch(shogiActions.setLastMoveInfo({ lastMoveInfo: "Not a valid move!" }));
     }

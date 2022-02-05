@@ -108,6 +108,8 @@ const shogiInitalState = {
   currentlySelectedType: "",
   validTiles: [],
   lastMoveInfo: "",
+  playerOnePieces: 20,
+  playerTwoPieces: 20
 };
 
 const shogiSlice = createSlice({
